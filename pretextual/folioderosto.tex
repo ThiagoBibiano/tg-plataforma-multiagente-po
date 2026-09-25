@@ -1,0 +1,8 @@
+% pretextual/folioderosto.tex — folha de rosto (guia p. 13-14).
+% Fidelidade completa (natureza do trabalho alinhada meio->direita, justificado,
+% orientador, local, data) fica para a Fase 7. Esqueleto usa o comando padrão do
+% abntex2 com os dados (ainda placeholder) de pretextual/dados.tex.
+% \imprimirfolhaderosto usa \@ifstar (para a variante *) — precisa de um token
+% dentro do MESMO arquivo depois do comando, senão o lookahead cruza a fronteira
+% do \input e quebra com o kernel LaTeX2e recente (ltfilehook). \relax resolve.
+\imprimirfolhaderosto\relax

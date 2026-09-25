@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fig2_fluxo_metodologico.svg — Caminho metodológico (cap3.tex, seção 3.1).
+     Refeita em 25/09/2026 no enxugamento pós-feedback: cada caixa traz o
+     passo, o produto que entrega ao passo seguinte e, à esquerda, a etapa da
+     DSR a que pertence (mesma correspondência do Quadro q:dsr). Mesmo padrão
+     gráfico das demais figuras (retângulo arredondado = etapa, seta cheia =
+     sequência). Monocromático, impressão em preto e branco. Gerada por script
+     (ver auditoria/log.md, 25/09/2026). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 660" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="seqf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#000000"/>
+    </marker>
+  </defs>
+  <text x="200" y="26" font-size="11" font-style="italic" text-anchor="end">Etapa da DSR</text>
+  <text x="510" y="26" font-size="11" font-style="italic" text-anchor="middle">Passo e produto entregue</text>
+  <rect x="220" y="40" width="580" height="48" rx="12" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="60" text-anchor="middle" font-size="13" font-weight="bold">Problema e lacuna</text>
+  <text x="510" y="77" text-anchor="middle" font-size="11">Capítulos 1 e 2 — produz: cinco limitações do estado atual</text>
+  <line x1="510" y1="88" x2="510" y2="108" stroke="#000000" stroke-width="1.5" marker-end="url(#seqf)"/>
+  <rect x="220" y="110" width="580" height="48" rx="12" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="130" text-anchor="middle" font-size="13" font-weight="bold">Passo 1 — Requisitos de projeto</text>
+  <text x="510" y="147" text-anchor="middle" font-size="11">produz: requisitos R1–R5 e escopo</text>
+  <line x1="510" y1="158" x2="510" y2="178" stroke="#000000" stroke-width="1.5" marker-end="url(#seqf)"/>
+  <rect x="220" y="180" width="580" height="48" rx="12" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="200" text-anchor="middle" font-size="13" font-weight="bold">Passo 2 — Protocolo da revisão</text>
+  <text x="510" y="217" text-anchor="middle" font-size="11">produz: questões e formulário de extração</text>
+  <line x1="510" y1="228" x2="510" y2="248" stroke="#000000" stroke-width="1.5" marker-end="url(#seqf)"/>
+  <rect x="220" y="250" width="580" height="48" rx="12" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="270" text-anchor="middle" font-size="13" font-weight="bold">Passo 3 — Arquitetura multiagente</text>
+  <text x="510" y="287" text-anchor="middle" font-size="11">produz: cinco agentes e sinais do Validador</text>
+  <line x1="510" y1="298" x2="510" y2="318" stroke="#000000" stroke-width="1.5" marker-end="url(#seqf)"/>
+  <rect x="220" y="320" width="580" height="48" rx="12" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="340" text-anchor="middle" font-size="13" font-weight="bold">Passo 4 — Ferramentas</text>
+  <text x="510" y="357" text-anchor="middle" font-size="11">produz: pilha fixa e registrada</text>
+  <line x1="510" y1="368" x2="510" y2="388" stroke="#000000" stroke-width="1.5" marker-end="url(#seqf)"/>
+  <rect x="220" y="390" width="580" height="48" rx="12" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="410" text-anchor="middle" font-size="13" font-weight="bold">Passo 5 — Conjunto-teste</text>
+  <text x="510" y="427" text-anchor="middle" font-size="11">produz: 24 problemas com gabaritos verificados</text>
+  <line x1="510" y1="438" x2="510" y2="458" stroke="#000000" stroke-width="1.5" marker-end="url(#seqf)"/>
+  <rect x="220" y="460" width="580" height="48" rx="12" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="480" text-anchor="middle" font-size="13" font-weight="bold">Passo 6 — Demonstração comparada</text>
+  <text x="510" y="497" text-anchor="middle" font-size="11">produz: quadro: fluxo tradicional × artefato</text>
+  <line x1="510" y1="508" x2="510" y2="528" stroke="#000000" stroke-width="1.5" marker-end="url(#seqf)"/>
+  <rect x="220" y="530" width="580" height="48" rx="12" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="550" text-anchor="middle" font-size="13" font-weight="bold">Passo 7 — Experimento computacional</text>
+  <text x="510" y="567" text-anchor="middle" font-size="11">produz: 4 critérios, com × sem Validador</text>
+  <line x1="510" y1="578" x2="510" y2="598" stroke="#000000" stroke-width="1.5" marker-end="url(#seqf)"/>
+  <rect x="220" y="600" width="580" height="48" rx="12" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="510" y="620" text-anchor="middle" font-size="13" font-weight="bold">Passo 8 — Classificação das falhas</text>
+  <text x="510" y="637" text-anchor="middle" font-size="11">produz: taxonomia de falhas por etapa</text>
+  <path d="M206,44 L200,44 L200,84 L206,84" fill="none" stroke="#000000" stroke-width="1.2"/>
+  <text x="192" y="68" text-anchor="end" font-size="11.5">Identificação do problema</text>
+  <path d="M206,114 L200,114 L200,224 L206,224" fill="none" stroke="#000000" stroke-width="1.2"/>
+  <text x="192" y="173" text-anchor="end" font-size="11.5">Definição dos objetivos</text>
+  <path d="M206,254 L200,254 L200,434 L206,434" fill="none" stroke="#000000" stroke-width="1.2"/>
+  <text x="192" y="348" text-anchor="end" font-size="11.5">Projeto e desenvolvimento</text>
+  <path d="M206,464 L200,464 L200,504 L206,504" fill="none" stroke="#000000" stroke-width="1.2"/>
+  <text x="192" y="488" text-anchor="end" font-size="11.5">Demonstração</text>
+  <path d="M206,534 L200,534 L200,644 L206,644" fill="none" stroke="#000000" stroke-width="1.2"/>
+  <text x="192" y="593" text-anchor="end" font-size="11.5">Avaliação</text>
+</svg>

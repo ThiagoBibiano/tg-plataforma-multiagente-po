@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fig3_to_be.svg — Cenário to be (guia p. 22, cap3.tex Figura 3, renomeada
+     de fig2_to_be.svg na reestruturação de 29/08/2026: a nova Figura 2 é o
+     fluxo metodológico, inserida no Passo 1 antes deste cenário).
+     Mesma notação e grafismo da Figura 1 (BPMN, Dumas et al. 2018), para
+     permitir comparação direta. Evidencia o desaparecimento da raia do
+     especialista humano (log_auditoria_cap3.md §8.4): os cinco agentes do
+     Quadro 7/Passo 4 substituem a raia "Especialista em PO" por uma única
+     raia "Plataforma multiagente". Laço de correção K<=3 do Passo 4
+     (Validador -> Modelador) mostrado como no texto. Fonte do mapeamento
+     estágio->agente: Quadro 2 (cap3.tex, q:confronto). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 535" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="seq2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#000000"/>
+    </marker>
+    <marker id="msg2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="none" stroke="#000000" stroke-width="1"/>
+    </marker>
+  </defs>
+
+  <text x="600" y="24" text-anchor="middle" font-size="16" font-weight="bold">Cenário to be — fluxo mediado pela plataforma multiagente</text>
+
+  <!-- Pool Usuário -->
+  <rect x="30" y="45" width="1140" height="150" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <rect x="30" y="45" width="34" height="150" fill="#e8e8e8" stroke="#000000" stroke-width="1.5"/>
+  <text x="47" y="120" text-anchor="middle" font-size="13" font-weight="bold" transform="rotate(-90 47 120)">USUÁRIO</text>
+
+  <!-- Pool Plataforma multiagente (raia do especialista humano desaparece) -->
+  <rect x="30" y="215" width="1140" height="270" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <rect x="30" y="215" width="34" height="270" fill="#e8e8e8" stroke="#000000" stroke-width="1.5"/>
+  <text x="47" y="350" text-anchor="middle" font-size="12" font-weight="bold" transform="rotate(-90 47 350)">PLATAFORMA MULTIAGENTE</text>
+
+  <!-- ===== Raia Usuário ===== -->
+  <circle cx="120" cy="120" r="16" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="120" y="146" text-anchor="middle" font-size="10">Início</text>
+
+  <rect x="175" y="95" width="180" height="50" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="265" y="115" text-anchor="middle" font-size="12">Descrever problema em</text>
+  <text x="265" y="131" text-anchor="middle" font-size="12">português + fornecer dados</text>
+
+  <rect x="855" y="95" width="195" height="50" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="952" y="115" text-anchor="middle" font-size="12">Receber explicação</text>
+  <text x="952" y="131" text-anchor="middle" font-size="12">e decidir</text>
+
+  <circle cx="1105" cy="120" r="16" fill="#ffffff" stroke="#000000" stroke-width="2.5"/>
+  <circle cx="1105" cy="120" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="1105" y="146" text-anchor="middle" font-size="10">Fim</text>
+
+  <line x1="136" y1="120" x2="173" y2="120" stroke="#000000" stroke-width="1.5" marker-end="url(#seq2)"/>
+  <line x1="1050" y1="120" x2="1087" y2="120" stroke="#000000" stroke-width="1.5" marker-end="url(#seq2)"/>
+
+  <!-- ===== Raia Plataforma (5 agentes, Quadro 7 / Passo 4) ===== -->
+  <rect x="170" y="320" width="150" height="55" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="245" y="343" text-anchor="middle" font-size="12">Interpretador</text>
+  <text x="245" y="359" text-anchor="middle" font-size="10">(elicitação + dados)</text>
+
+  <rect x="345" y="320" width="140" height="55" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="415" y="343" text-anchor="middle" font-size="12">Modelador</text>
+  <text x="415" y="359" text-anchor="middle" font-size="10">(desenvolvimento)</text>
+
+  <rect x="510" y="320" width="150" height="55" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="585" y="343" text-anchor="middle" font-size="12">Gerador-Executor</text>
+  <text x="585" y="359" text-anchor="middle" font-size="10">(implementação)</text>
+
+  <!-- Validador com gateway de decisão -->
+  <rect x="685" y="320" width="140" height="55" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="755" y="343" text-anchor="middle" font-size="12">Validador</text>
+  <text x="755" y="359" text-anchor="middle" font-size="10">(validação)</text>
+
+  <polygon points="875,347 900,325 925,347 900,369" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="900" y="351" text-anchor="middle" font-size="9">OK?</text>
+
+  <rect x="950" y="320" width="140" height="55" rx="10" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="1020" y="343" text-anchor="middle" font-size="12">Explicador</text>
+  <text x="1020" y="359" text-anchor="middle" font-size="10">(implantação/uso)</text>
+
+  <!-- sequência plataforma -->
+  <line x1="320" y1="347" x2="343" y2="347" stroke="#000000" stroke-width="1.5" marker-end="url(#seq2)"/>
+  <line x1="485" y1="347" x2="508" y2="347" stroke="#000000" stroke-width="1.5" marker-end="url(#seq2)"/>
+  <line x1="660" y1="347" x2="683" y2="347" stroke="#000000" stroke-width="1.5" marker-end="url(#seq2)"/>
+  <line x1="825" y1="347" x2="873" y2="347" stroke="#000000" stroke-width="1.5" marker-end="url(#seq2)"/>
+  <line x1="925" y1="347" x2="948" y2="347" stroke="#000000" stroke-width="1.5" marker-end="url(#seq2)"/>
+  <text x="937" y="337" text-anchor="middle" font-size="10">sim</text>
+
+  <!-- laço de correção: gateway -> Modelador, K<=3 -->
+  <path d="M 900,325 C 900,270 415,270 415,318" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#seq2)"/>
+  <text x="657" y="266" text-anchor="middle" font-size="10" font-style="italic">não — retorna ao Modelador (K ≤ 3)</text>
+
+  <!-- fluxos de mensagem usuário <-> plataforma -->
+  <line x1="265" y1="145" x2="245" y2="318" stroke="#000000" stroke-width="1.3" stroke-dasharray="6,3" marker-end="url(#msg2)"/>
+  <line x1="1020" y1="320" x2="965" y2="147" stroke="#000000" stroke-width="1.3" stroke-dasharray="6,3" marker-end="url(#msg2)"/>
+
+  <!-- legenda -->
+  <g font-size="11">
+    <line x1="200" y1="520" x2="240" y2="520" stroke="#000000" stroke-width="1.5" marker-end="url(#seq2)"/>
+    <text x="248" y="524">fluxo de sequência</text>
+    <line x1="450" y1="520" x2="490" y2="520" stroke="#000000" stroke-width="1.3" stroke-dasharray="6,3" marker-end="url(#msg2)"/>
+    <text x="498" y="524">fluxo de mensagem (usuário/plataforma)</text>
+    <polygon points="810,528 822,514 834,528 822,542" fill="#ffffff" stroke="#000000" stroke-width="1.3"/>
+    <text x="842" y="524">gateway de decisão</text>
+  </g>
+
+</svg>

@@ -1,0 +1,541 @@
+% referencias.bib — construído na Fase 4 a partir da reconciliação de:
+%   - artefatos/introducao_tg1_v4.md, lista "# Referências" (linhas 139-182) — 21 obras
+%   - artefatos/metodologia_cap3.md, lista "# REFERÊNCIAS ACRESCENTADAS POR ESTE
+%     CAPÍTULO" (linhas 582-620) — 18 obras novas
+%   - artefatos/catalogo_fontes_tg1.md — estado de verificação de cada obra
+% Chaves documentadas em auditoria/citekeys_cap1.md e auditoria/citekeys_cap3.md.
+% As 4 obras citadas só via *apud* (Bloco C-bis do catálogo) NÃO entram aqui —
+% ficam só na chamada em texto, por norma (NBR 10520, citação de citação).
+%
+% Campos conferidos contra a declaração ENTRY de abntex2-alf.bst (não presumidos
+% de memória): subtitle (nunca em destaque, por norma — guia p. 28), url com
+% prefixo "doi:" para DOI (o .bst distingue por prefixo), urlaccessdate (emite
+% "Acesso em: " + valor), organization + conference-number/year/location +
+% booktitle para eventos (produz "In: NOME DO EVENTO, n., ano, local. Título
+% [...]").
+%
+% Opções ABNT globais abnt-etal-text e abnt-doi são citeoptions carregadas como
+% opção do pacote abntex2cite em preambulo.tex (citam, por chave literal, as
+% entradas ja embutidas no pacote, em abntex2-options.bib). ATENCAO, achado
+% empirico (auditoria/log.md, Fase 4): chave de citacao no BibTeX e insensivel
+% a maiuscula/minuscula. O pacote define duas entradas cujas chaves so diferem
+% em caixa, "abnt-cite-style=AUTHORYEAR" e "abnt-cite-style=AuthorYEAR" — elas
+% colidem (BibTeX resolve as duas para o mesmo par, e a citada por ultimo gera
+% "Repeated entry"). A entrada abaixo, com chave propria sem colisao, resolve
+% isso; e citada via \citeoption{tg1-cite-style} em preambulo.tex.
+@ABNT-options{tg1-cite-style,
+  abnt-cite-style = "(Author, YEAR)",
+  key = "tg1-cite-style"
+}
+
+% ============================================================
+% Bloco A/B — Capítulo 1 (21 obras)
+% ============================================================
+
+@inproceedings{ahmaditeshnizi2024,
+  author = {AhmadiTeshnizi, Ali and Gao, Wenzhi and Udell, Madeleine},
+  title = {{OptiMUS}},
+  subtitle = {scalable optimization modeling with {(MI)LP} solvers and large language models},
+  organization = {International Conference on Machine Learning},
+  conference-number = {41},
+  conference-year = {2024},
+  conference-location = {Viena},
+  booktitle = {Proceedings [...]},
+  address = {\textit{[S. l.]}},
+  publisher = {PMLR},
+  year = {2024},
+  pages = {577--596},
+  series = {Proceedings of Machine Learning Research},
+  volume = {235},
+}
+
+@misc{ahmaditeshnizi2026,
+  author = {AhmadiTeshnizi, Ali and others},
+  title = {{OptiMUS}-0.3},
+  subtitle = {using large language models to model and solve optimization problems at scale},
+  address = {\textit{[S. l.]}},
+  publisher = {arXiv},
+  year = {2026},
+  url = {https://arxiv.org/abs/2407.19633},
+  urlaccessdate = {5 ago. 2026},
+  note = {Preprint, versão 4},
+}
+
+@book{arenales2007,
+  author = {Arenales, Marcos and others},
+  title = {Pesquisa operacional},
+  subtitle = {para cursos de engenharia},
+  address = {Rio de Janeiro},
+  publisher = {Elsevier; ABEPRO},
+  year = {2007},
+  isbn = {978-85-352-5193-7},
+}
+
+@inproceedings{astorga2025,
+  author = {Astorga, Nicolás and others},
+  title = {Autoformulation of mathematical optimization models using {LLMs}},
+  organization = {International Conference on Machine Learning},
+  conference-number = {42},
+  conference-year = {2025},
+  conference-location = {Vancouver},
+  booktitle = {Proceedings [...]},
+  address = {\textit{[S. l.]}},
+  publisher = {PMLR},
+  year = {2025},
+  pages = {1864--1886},
+  series = {Proceedings of Machine Learning Research},
+  volume = {267},
+}
+
+@article{fourer2012,
+  author = {Fourer, Robert},
+  title = {On the evolution of optimization modeling systems},
+  journal = {Documenta Mathematica},
+  address = {\textit{[S. l.]}},
+  note = {Extra Volume ISMP},
+  pages = {377--388},
+  year = {2012},
+}
+
+@article{henderson1980,
+  author = {Henderson, John C. and McDaniel, Jr., Reuben R. and Wagner, Gerald R.},
+  title = {The implementation of operations research/management science modeling techniques},
+  journal = {IEEE Transactions on Engineering Management},
+  address = {\textit{[S. l.]}},
+  volume = {v. EM-27},
+  number = {1},
+  pages = {12--18},
+  year = {1980},
+}
+
+@inproceedings{lai2013,
+  author = {Lai, Wan Fei and Ngerng, Miang Hong and Ho, Min Yoong},
+  title = {An analytic hierarchy process ({AHP}) model to anticipate logistics organization's preference for operations research ({OR}) tools adoption},
+  organization = {International Symposium on the Analytic Hierarchy Process},
+  conference-number = {12},
+  conference-year = {2013},
+  conference-location = {Kuala Lumpur},
+  booktitle = {Proceedings [...]},
+  address = {\textit{[S. l.: s. n.]}},
+  year = {2013},
+  pages = {1--9},
+}
+
+@article{langabeer2010,
+  author = {Langabeer, James R. and Worthington, Dave J.},
+  title = {Operations research diffusion in health care management},
+  journal = {Journal of Health Care Finance},
+  address = {\textit{[S. l.]}},
+  volume = {36},
+  number = {3},
+  pages = {73--87},
+  year = {2010},
+}
+
+@misc{lawless2025,
+  author = {Lawless, Connor and Schoeffer, Jakob and Udell, Madeleine},
+  title = {``It was a magical box''},
+  subtitle = {understanding practitioner workflows and needs in optimization},
+  address = {\textit{[S. l.]}},
+  publisher = {arXiv},
+  year = {2025},
+  url = {https://arxiv.org/abs/2509.16402},
+  urlaccessdate = {5 ago. 2026},
+  note = {Preprint},
+}
+
+@misc{li2023,
+  author = {Li, Qingyang and Zhang, Lele and Mak-Hau, Vicky},
+  title = {Synthesizing mixed-integer linear programming models from natural language descriptions},
+  address = {\textit{[S. l.]}},
+  publisher = {arXiv},
+  year = {2023},
+  url = {https://arxiv.org/abs/2311.15271},
+  urlaccessdate = {5 ago. 2026},
+  note = {Preprint},
+}
+
+@misc{lima2025,
+  author = {Lima, Vinicius and others},
+  title = {Toward a trustworthy optimization modeling agent via verifiable synthetic data generation},
+  address = {\textit{[S. l.]}},
+  publisher = {arXiv},
+  year = {2025},
+  url = {https://arxiv.org/abs/2508.03117},
+  urlaccessdate = {5 ago. 2026},
+  note = {Preprint},
+}
+
+@misc{monteiro2026,
+  author = {Monteiro, Adriana Laurindo and others},
+  title = {{OptiAgent}},
+  subtitle = {end-to-end optimization modeling via multi-agent iterative refinement},
+  address = {\textit{[S. l.]}},
+  publisher = {arXiv},
+  year = {2026},
+  url = {https://arxiv.org/abs/2607.05346},
+  urlaccessdate = {5 ago. 2026},
+  note = {Preprint},
+}
+
+@article{mostajabdaveh2024,
+  author = {Mostajabdaveh, Mahdi and others},
+  title = {Optimization modeling and verification from problem specifications using a multi-agent multi-stage {LLM} framework},
+  journal = {INFOR: Information Systems and Operational Research},
+  address = {\textit{[S. l.]}},
+  volume = {62},
+  number = {4},
+  pages = {599--617},
+  year = {2024},
+  url = {doi:10.1080/03155986.2024.2381306},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@article{muller2018,
+  author = {M{\"u}ller, Felipe Martins and Azevedo, Anibal Tavares de},
+  title = {A história da {Pesquisa Operacional} no {Brasil}},
+  subtitle = {o caso dos {Encontros Regionais de Pesquisa Operacional} -- {ERPO}},
+  journal = {Pesquisa Operacional para o Desenvolvimento},
+  address = {\textit{[S. l.]}},
+  volume = {10},
+  number = {3},
+  pages = {128--145},
+  year = {2018},
+  url = {doi:10.4322/PODes.2018.009},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@article{peffers2007,
+  author = {Peffers, Ken and others},
+  title = {A design science research methodology for information systems research},
+  journal = {Journal of Management Information Systems},
+  address = {\textit{[S. l.]}},
+  volume = {24},
+  number = {3},
+  pages = {45--77},
+  year = {2007},
+  url = {doi:10.2753/MIS0742-1222240302},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@inproceedings{ramamonjison2023,
+  author = {Ramamonjison, Rindranirina and others},
+  title = {{NL4Opt} competition},
+  subtitle = {formulating optimization problems based on their natural language descriptions},
+  organization = {NeurIPS Competition Track},
+  conference-year = {2022},
+  conference-location = {Nova Orleans},
+  booktitle = {Proceedings [...]},
+  address = {\textit{[S. l.]}},
+  publisher = {PMLR},
+  year = {2023},
+  pages = {189--203},
+  series = {Proceedings of Machine Learning Research},
+  volume = {220},
+}
+
+@misc{refai2025,
+  author = {Refai, Dania and Ahmed, Moataz},
+  title = {Peering inside the black box},
+  subtitle = {uncovering {LLM} errors in optimization modelling through component-level evaluation},
+  address = {\textit{[S. l.]}},
+  publisher = {arXiv},
+  year = {2025},
+  url = {https://arxiv.org/abs/2510.16943},
+  urlaccessdate = {5 ago. 2026},
+  note = {Preprint},
+}
+
+@inproceedings{shi2023,
+  author = {Shi, Freda and others},
+  title = {Language models are multilingual chain-of-thought reasoners},
+  organization = {International Conference on Learning Representations},
+  conference-number = {11},
+  conference-year = {2023},
+  conference-location = {Kigali},
+  booktitle = {Proceedings [...]},
+  address = {\textit{[S. l.: s. n.]}},
+  year = {2023},
+}
+
+@article{shobrys2002,
+  author = {Shobrys, Donald E. and White, Douglas C.},
+  title = {Planning, scheduling and control systems},
+  subtitle = {why cannot they work together?},
+  journal = {Computers \& Chemical Engineering},
+  address = {\textit{[S. l.]}},
+  volume = {26},
+  number = {2},
+  pages = {149--160},
+  year = {2002},
+  url = {doi:10.1016/S0098-1354(01)00737-2},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@article{wasserkrug2025,
+  author = {Wasserkrug, Segev and others},
+  title = {Enhancing decision making through the integration of large language models and operations research optimization},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  address = {\textit{[S. l.]}},
+  volume = {39},
+  number = {27},
+  pages = {28643--28650},
+  year = {2025},
+  url = {doi:10.1609/aaai.v39i27.35090},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@inproceedings{xiao2025,
+  author = {Xiao, Ziyang and others},
+  title = {A survey of optimization modeling meets {LLMs}},
+  subtitle = {progress and future directions},
+  organization = {International Joint Conference on Artificial Intelligence},
+  conference-number = {34},
+  conference-year = {2025},
+  conference-location = {Montreal},
+  booktitle = {Proceedings [...]},
+  address = {\textit{[S. l.]}},
+  publisher = {IJCAI},
+  year = {2025},
+  pages = {10742--10750},
+}
+
+% ============================================================
+% Bloco C — novas do Capítulo 3 (18 obras)
+% ============================================================
+
+@article{achterberg2009,
+  author = {Achterberg, Tobias},
+  title = {{SCIP}: solving constraint integer programs},
+  journal = {Mathematical Programming Computation},
+  address = {\textit{[S. l.]}},
+  volume = {1},
+  number = {1},
+  pages = {1--41},
+  year = {2009},
+  url = {doi:10.1007/s12532-008-0001-1},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@book{dumas2018,
+  author = {Dumas, Marlon and others},
+  title = {Fundamentals of business process management},
+  edition = {2},
+  address = {Berlin},
+  publisher = {Springer},
+  year = {2018},
+  url = {doi:10.1007/978-3-662-56509-4},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@misc{forrest2019,
+  author = {Forrest, John and others},
+  title = {coin-or/Cbc},
+  subtitle = {version 2.10.3},
+  address = {\textit{[S. l.]}},
+  publisher = {Zenodo},
+  year = {2019},
+  url = {doi:10.5281/zenodo.3246628},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@misc{frontlinesystems2024,
+  organization = {Frontline Systems},
+  title = {Optimization tutorial},
+  subtitle = {reports and sensitivity},
+  address = {Incline Village},
+  publisher = {Frontline Systems},
+  year = {2024},
+  url = {https://www.solver.com/courses/optimization/module-2/reports-and-sensitivity},
+  urlaccessdate = {2 ago. 2026},
+}
+
+@article{hart2011,
+  author = {Hart, William E. and Watson, Jean-Paul and Woodruff, David L.},
+  title = {Pyomo: modeling and solving mathematical programs in {Python}},
+  journal = {Mathematical Programming Computation},
+  address = {\textit{[S. l.]}},
+  volume = {3},
+  number = {3},
+  pages = {219--260},
+  year = {2011},
+  url = {doi:10.1007/s12532-011-0026-8},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@inproceedings{huang2024,
+  author = {Huang, Jie and others},
+  title = {Large language models cannot self-correct reasoning yet},
+  organization = {International Conference on Learning Representations},
+  conference-number = {12},
+  conference-year = {2024},
+  conference-location = {Viena},
+  booktitle = {Proceedings [...]},
+  address = {\textit{[S. l.]}},
+  publisher = {ICLR},
+  year = {2024},
+  url = {https://arxiv.org/abs/2310.01798},
+  urlaccessdate = {2 ago. 2026},
+}
+
+@article{kamoi2024,
+  author = {Kamoi, Ryo and others},
+  title = {When can {LLMs} actually correct their own mistakes? {A} critical survey of self-correction of {LLMs}},
+  journal = {Transactions of the Association for Computational Linguistics},
+  address = {\textit{[S. l.]}},
+  volume = {12},
+  pages = {1417--1440},
+  year = {2024},
+  url = {doi:10.1162/tacl_a_00713},
+  urlaccessdate = {9 ago. 2026},
+}
+
+% Tipo book, nao techreport: a funcao "manual" do abntex2-alf.bst (para a
+% qual techreport e apenas um alias) nao imprime o campo publisher - achado
+% empirico (auditoria/log.md, Fase 4). O tipo book imprime local+editora
+% corretamente, e o relatorio tecnico e tratado adequadamente como
+% monografia para fins de referencia.
+@book{kitchenham2007,
+  author = {Kitchenham, Barbara and Charters, Stuart},
+  title = {Guidelines for performing systematic literature reviews in software engineering},
+  address = {Keele; Durham},
+  publisher = {Keele University; University of Durham},
+  year = {2007},
+  series = {EBSE Technical Report},
+  number = {EBSE-2007-01},
+}
+
+@article{lami2019,
+  author = {Lami, Isabella M. and Tavella, Elena},
+  title = {On the usefulness of soft {OR} models in decision making},
+  subtitle = {a comparison of {Problem Structuring Methods} supported and self-organized workshops},
+  journal = {European Journal of Operational Research},
+  address = {\textit{[S. l.]}},
+  volume = {275},
+  number = {3},
+  pages = {1020--1036},
+  year = {2019},
+  url = {doi:10.1016/j.ejor.2018.12.016},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@inproceedings{lei2020,
+  author = {Lei, Wenqiang and others},
+  title = {Re-examining the role of schema linking in text-to-{SQL}},
+  organization = {Conference on Empirical Methods in Natural Language Processing},
+  conference-year = {2020},
+  conference-location = {Online},
+  booktitle = {Proceedings [...]},
+  address = {Stroudsburg},
+  publisher = {Association for Computational Linguistics},
+  year = {2020},
+  pages = {6943--6954},
+  url = {doi:10.18653/v1/2020.emnlp-main.564},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@article{mcnemar1947,
+  author = {McNemar, Quinn},
+  title = {Note on the sampling error of the difference between correlated proportions or percentages},
+  journal = {Psychometrika},
+  address = {\textit{[S. l.]}},
+  volume = {12},
+  number = {2},
+  pages = {153--157},
+  year = {1947},
+  url = {doi:10.1007/BF02295996},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@misc{mitchell2011,
+  author = {Mitchell, Stuart and O'Sullivan, Michael and Dunning, Iain},
+  title = {PuLP},
+  subtitle = {a linear programming toolkit for {Python}},
+  address = {Auckland},
+  publisher = {The University of Auckland},
+  year = {2011},
+  url = {https://www.coin-or.org/PuLP/},
+  urlaccessdate = {2 ago. 2026},
+}
+
+@article{page2021,
+  author = {Page, Matthew J. and others},
+  title = {The {PRISMA} 2020 statement},
+  subtitle = {an updated guideline for reporting systematic reviews},
+  journal = {BMJ},
+  address = {\textit{[S. l.]}},
+  volume = {372},
+  number = {71},
+  year = {2021},
+  url = {doi:10.1136/bmj.n71},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@article{robinson2008a,
+  author = {Robinson, Stewart},
+  title = {Conceptual modelling for simulation part {I}},
+  subtitle = {definition and requirements},
+  journal = {Journal of the Operational Research Society},
+  address = {\textit{[S. l.]}},
+  volume = {59},
+  number = {3},
+  pages = {278--290},
+  year = {2008},
+  url = {doi:10.1057/palgrave.jors.2602368},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@article{robinson2008b,
+  author = {Robinson, Stewart},
+  title = {Conceptual modelling for simulation part {II}},
+  subtitle = {a framework for conceptual modelling},
+  journal = {Journal of the Operational Research Society},
+  address = {\textit{[S. l.]}},
+  volume = {59},
+  number = {3},
+  pages = {291--304},
+  year = {2008},
+  url = {doi:10.1057/palgrave.jors.2602369},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@article{rosenhead2006,
+  author = {Rosenhead, Jonathan},
+  title = {Past, present and future of problem structuring methods},
+  journal = {Journal of the Operational Research Society},
+  address = {\textit{[S. l.]}},
+  volume = {57},
+  number = {7},
+  pages = {759--765},
+  year = {2006},
+  url = {doi:10.1057/palgrave.jors.2602206},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@inproceedings{tyen2024,
+  author = {Tyen, Gladys and others},
+  title = {{LLMs} cannot find reasoning errors, but can correct them given the error location},
+  organization = {Findings of the Association for Computational Linguistics: ACL 2024},
+  conference-year = {2024},
+  conference-location = {Bangkok},
+  booktitle = {Findings [...]},
+  address = {Stroudsburg},
+  publisher = {Association for Computational Linguistics},
+  year = {2024},
+  pages = {13894--13908},
+  url = {doi:10.18653/v1/2024.findings-acl.826},
+  urlaccessdate = {9 ago. 2026},
+}
+
+@article{venable2016,
+  author = {Venable, John and Pries-Heje, Jan and Baskerville, Richard},
+  title = {{FEDS}: a framework for evaluation in design science research},
+  journal = {European Journal of Information Systems},
+  address = {\textit{[S. l.]}},
+  volume = {25},
+  number = {1},
+  pages = {77--89},
+  year = {2016},
+  url = {doi:10.1057/ejis.2014.36},
+  urlaccessdate = {9 ago. 2026},
+}
