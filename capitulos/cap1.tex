@@ -1,0 +1,78 @@
+% capitulos/cap1.tex — Capítulo 1 (Introdução).
+% Reescrito em 25/09/2026 no enxugamento pós-feedback (ver
+% auditoria/plano_enxugamento.md). Mantém a cadeia pedida pela orientadora
+% (contextualização → problema → pergunta → objetivos → justificativa →
+% método breve), mas cada evidência é citada em uma ou duas frases e
+% detalhada só no Capítulo 2. Pergunta de pesquisa, objetivo geral e
+% objetivos específicos preservados palavra por palavra. Versão anterior em
+% auditoria/versoes/pre_enxugamento/cap1.tex.
+\chapter{Introdução}
+
+\section{Contextualização}
+
+Planejar a produção, alocar recursos escassos, compor misturas de insumos, montar escalas de equipes e distribuir produtos são decisões com a mesma estrutura: várias ações possíveis, restrições operacionais e um objetivo que pode ser medido. A Pesquisa Operacional (PO) oferece técnicas consolidadas para tratar essa classe de problemas \cite{arenales2007}, e a otimização matemática, seu principal instrumento, gera benefícios relevantes em setores como cadeias de suprimentos, saúde, energia e infraestrutura \cite{wasserkrug2025}. No Brasil, a área está institucionalizada há mais de cinco décadas, desde a fundação da Sociedade Brasileira de Pesquisa Operacional (SOBRAPO), em 1969 \cite{muller2018}.
+
+A maturidade da área, porém, não se traduziu em adoção ampla nas organizações. Desde a década de 1980 a literatura registra que a principal barreira não está nos algoritmos, e sim no que vem antes e depois deles: organizar os dados, entender o problema, formular o modelo e comunicar os resultados \cite{henderson1980, fourer2012}. As ferramentas continuam restritas a um público de formação avançada: 81\% dos usuários do \textit{solver} Gurobi têm pós-graduação \cite{ahmaditeshnizi2026}. Um dos gargalos da PO aplicada é, portanto, de tradução. Quem conhece a operação não domina o formalismo matemático, e quem domina o formalismo depende de várias rodadas de conversa para converter capacidade, demanda ou prioridade em variáveis, restrições e função objetivo.
+
+Os modelos de linguagem de grande porte (\textit{Large Language Models}, LLMs) mudaram esse cenário. Desde 2022, uma linha de pesquisa chamada \textit{Natural Language to Optimization} (NL2Opt) desenvolve sistemas que convertem descrições em texto em modelos de otimização, geram o código, executam o \textit{solver} e corrigem os próprios erros \cite{ramamonjison2023, ahmaditeshnizi2026, monteiro2026}.
+
+Esses sistemas, contudo, foram pensados para quem já domina a modelagem, são avaliados com enunciados prontos e autocontidos, e funcionam em inglês. Além disso, gerar código que executa não garante gerar o modelo certo: há registro de uma formulação que omitiu metade das restrições de referência e ainda assim chegou ao mesmo valor objetivo \cite{refai2025}, e quase todos os conjuntos de avaliação da área têm erros em mais de 15\% dos problemas \cite{xiao2025}. O estudo mais detalhado sobre a prática da modelagem deixou explicitamente em aberto a questão dos usuários não especialistas \cite{lawless2025}. O Capítulo 2 apresenta essas evidências em detalhe.
+
+\section{Problema e pergunta de pesquisa}
+\label{sec:problema-pesquisa}
+
+Na literatura levantada (Capítulo 2), não se identificou um artefato que reúna simultaneamente:
+
+\begin{enumerate}
+  \item o profissional de domínio não especialista em Pesquisa Operacional como usuário final;
+  \item um fluxo completo, da interpretação do problema à formulação, execução e explicação da solução;
+  \item parâmetros obtidos de fontes externas de dados estruturados, e não apenas de enunciados autocontidos;
+  \item interação prioritariamente em língua portuguesa; e
+  \item transparência e rastreabilidade do processo de modelagem como requisitos de projeto.
+\end{enumerate}
+
+A lacuna, portanto, não é a falta de sistemas que gerem modelos de otimização, e sim a falta de uma abordagem que reúna essas cinco dimensões em um artefato voltado ao contexto organizacional brasileiro. Daí a questão de pesquisa:
+
+\begin{quote}
+  Em que medida uma arquitetura multiagente, concebida para profissionais não especialistas em Pesquisa Operacional, pode transformar descrições de problemas em língua portuguesa e dados estruturados fornecidos pelo usuário em modelos de programação linear ou programação linear inteira mista corretos, executáveis e rastreáveis, e qual é o efeito de um agente validador sobre a acurácia da formulação, a taxa de resolução de ponta a ponta e a correção das soluções produzidas?
+\end{quote}
+
+\section{Objetivos}
+\label{sec:objetivos}
+
+O objetivo geral deste trabalho é:
+
+\begin{quote}
+  Desenvolver e avaliar, para profissionais não especialistas em Pesquisa Operacional, um protótipo de plataforma multiagente, em abordagem \textit{low-code}, capaz de transformar a descrição em língua portuguesa de um problema de otimização, nas classes de programação linear (PL) e programação linear inteira mista (PLIM), combinada a dados estruturados fornecidos pelo usuário, em um modelo matemático formulado, executado, validado e apresentado de maneira rastreável.
+\end{quote}
+
+A expressão \textit{low-code} refere-se à redução da programação exigida do usuário final, e não à ausência de programação na construção do artefato. Os objetivos específicos são:
+
+\begin{enumerate}
+  \item projetar a arquitetura multiagente, definindo os papéis, as responsabilidades, os artefatos intermediários e os fluxos de informação e realimentação entre os agentes;
+  \item implementar o fluxo de interpretação do problema, integração dos dados, formulação matemática, geração e execução do código do \textit{solver}, validação e explicação da solução;
+  \item definir um protocolo de avaliação baseado em um conjunto curado de problemas-teste, com descrições em língua portuguesa, fontes externas de dados, formulações de referência e soluções verificadas;
+  \item avaliar o artefato quanto à acurácia da formulação, à taxa de resolução de ponta a ponta, à correção das soluções e ao efeito do agente validador sobre esses indicadores; e
+  \item contrastar, para os mesmos casos, o fluxo de resolução mediado pelo artefato e o fluxo tradicional de resolução de problemas de Pesquisa Operacional, quanto aos pré-requisitos de conhecimento, às ferramentas exigidas, às etapas percorridas e aos artefatos produzidos.
+\end{enumerate}
+
+Transparência, neste trabalho, significa rastreabilidade do processo de modelagem: o usuário pode inspecionar os requisitos identificados, os dados associados a cada parâmetro, as variáveis, restrições e função objetivo, as inconsistências detectadas e as correções feitas. Não se trata de expor o texto de raciocínio interno do modelo de linguagem.
+
+Não se pretende demonstrar que o artefato dispensa especialistas, que resolve qualquer problema organizacional ou que é adotado por gestores. O trabalho busca evidências sobre as capacidades e os limites do artefato em problemas de PL e PLIM; a avaliação com usuários fica para estudos posteriores.
+
+\section{Justificativa}
+
+Do ponto de vista gerencial, o trabalho ataca uma barreira de adoção documentada há mais de quatro décadas: a dependência de especialistas para traduzir problemas organizacionais em modelos matemáticos. Reduzi-la pode permitir que profissionais do domínio avaliem alternativas e usem seus dados de forma mais sistemática. O tema é próprio da Engenharia de Gestão porque envolve, ao mesmo tempo, pessoas, processos, dados, modelos e sistemas computacionais.
+
+O desenho do artefato responde às barreiras apontadas na literatura. A interação em linguagem natural e a explicação em linguagem de negócio atacam a falha de comunicação entre gestor e modelo \cite{henderson1980}. A exposição das premissas, do modelo e das validações responde à exigência de credibilidade \cite{shobrys2002} e à percepção de ``caixa mágica'' \cite{lawless2025}. A redução da programação exigida enfrenta a barreira de competência técnica \cite{lai2013}.
+
+Do ponto de vista científico, a área é recente e combina resultados promissores com limitações de método. Sabe-se que LLMs podem formular e implementar problemas de otimização \cite{mostajabdaveh2024, ahmaditeshnizi2024}, mas também que código executável e valor objetivo correto não garantem um modelo fiel ao problema \cite{refai2025}. Avaliar cada componente da formulação e medir o efeito do agente validador permite saber não só se o sistema funciona, mas onde e por que falha.
+
+Por fim, a otimização oferece uma condição rara entre as tarefas atribuídas a LLMs: o resultado pode ser verificado. Formulações podem ser comparadas com gabaritos, soluções podem ser testadas quanto à viabilidade e valores objetivos podem ser conferidos por \textit{solver} \cite{ramamonjison2023, refai2025}. Como os conjuntos de avaliação públicos contêm erros \cite{xiao2025}, o trabalho constrói um conjunto-teste próprio, com gabaritos verificados; do contrário, falhas do gabarito seriam atribuídas ao artefato.
+
+\section{Método e estrutura do trabalho}
+\label{sec:metodologia-pesquisa}
+
+A pesquisa segue a \textit{Design Science Research} (DSR), abordagem que produz conhecimento construindo e avaliando artefatos, nas seis etapas de \citeonline{peffers2007}: identificação do problema, definição dos objetivos, projeto e desenvolvimento, demonstração, avaliação e comunicação. A avaliação tem duas frentes: uma demonstração que compara, nos mesmos casos, o fluxo tradicional de resolução com o fluxo mediado pelo artefato; e um experimento computacional que executa o artefato com e sem o agente validador e mede quatro critérios (acurácia da formulação, resolução de ponta a ponta, correção da solução e efeito do validador).
+
+O Capítulo 2 apresenta o referencial teórico. O Capítulo 3 descreve o método em oito passos encadeados, dos requisitos do artefato à classificação das falhas, e relata o piloto realizado nesta etapa. A construção do artefato e a execução da avaliação ocorrem no TG2.

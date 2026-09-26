@@ -1,0 +1,27 @@
+{
+  // Abre os três repositórios do TG2 numa só janela (ADR-009 de po-multiagente).
+  // VS Code: Arquivo > Abrir Workspace a partir do Arquivo... > este arquivo.
+  "folders": [
+    { "name": "TG (texto)", "path": "." },
+    { "name": "po-multiagente (código)", "path": "../po-multiagente" },
+    { "name": "conjunto-teste (privado)", "path": "../po-multiagente-conjunto-teste" }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/.mypy_cache": true,
+      "**/.ruff_cache": true,
+      "**/.pytest_cache": true
+    },
+    "python.defaultInterpreterPath": "../po-multiagente/.venv/bin/python"
+  },
+  "extensions": {
+    "recommendations": [
+      "charliermarsh.ruff",
+      "ms-python.python",
+      "ms-python.mypy-type-checker",
+      "editorconfig.editorconfig",
+      "james-yu.latex-workshop"
+    ]
+  }
+}

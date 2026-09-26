@@ -1,0 +1,255 @@
+% preambulo.tex — cada \usepackage comentado com a regra do guia que atende.
+% Fonte de todas as remissões: auditoria/parametros_guia.md (página impressa do guia).
+%
+% Decisão de classe (Fase 2, registrada em auditoria/log.md): abntex2, não formatação
+% manual. Justificativa: abntex2 já nasce configurado para as margens, corpo de fonte
+% e entrelinhas que o guia pede (§1 de parametros_guia.md — 3/2cm, 12pt, 1,5 entrelinhas),
+% e resolve de fábrica a maior parte dos elementos pré-textuais (capa, folha de rosto,
+% ficha catalográfica, resumo, listas, sumário — §7). Onde o guia diverge do
+% comportamento padrão do pacote, o pacote é sobrescrito e a divergência vai para o log
+% (R-3: guia vence pacote). Montar tudo à mão custaria mais do que essas sobrescritas.
+
+\documentclass[
+  12pt,          % corpo do texto — guia p. 12 ("fonte tamanho 12 para o texto")
+  a4paper,       % papel A4 (210x297mm) — guia p. 12
+  oneside,       % entrega só digital (PDF); guia permite anverso-only para textual/
+                 % pós-textual (p. 13) e não exige twoside para TCC de graduação.
+                 % Único caso de "verso" no guia é a ficha catalográfica atrás da folha
+                 % de rosto (p. 13), tratado como página própria em sequência, não como
+                 % impressão física frente/verso — ver DECISÃO em auditoria/log.md.
+  chapter=TITLE, % títulos de capítulo em caixa alta + negrito — confirmado no exemplo
+                 % real de sumário do próprio guia (Figura 11, p. 20: "2 A BIBLIOTECA"
+                 % em maiúsculas e negrito). NÃO usar section=TITLE: no mesmo exemplo,
+                 % os títulos de nível 2 ("2.1 História") aparecem em negrito, mas
+                 % SEM caixa alta. O negrito em si NÃO é automático (achado C2/Fase 8,
+                 % ver bloco de correção logo abaixo do \documentclass) — a suposição
+                 % original aqui estava errada.
+  english,       % hifenização auxiliar (títulos/termos em inglês no corpo)
+  brazil,        % idioma principal do documento
+]{abntex2}
+
+% memhfixc: abntex2 é baseado em memoir, que já carrega hyperref internamente;
+% memoir+hyperref têm uma interação conhecida de contadores/âncoras que produz
+% destinos de página duplicados (ex. "page.1" repetido entre capa e folha de
+% rosto) — memhfixc é o patch oficial do próprio memoir para isso, e precisa vir
+% DEPOIS de hyperref já estar carregado (por isso aqui, logo após \documentclass,
+% já que abntex2.cls carrega hyperref internamente antes deste ponto).
+\usepackage{memhfixc}
+
+% Negrito em título de capítulo e de seção primária (guia p. 21-22 e Figura 11,
+% p. impressa 20) — achado C2/Fase 8 (ver auditoria/log.md §21): abntex2.cls
+% define \ABNTEXchapterfont e \ABNTEXsectionfont como \sffamily puro, sem
+% \bfseries em nenhum dos dois, e \setsecheadstyle/\chaptitlefont usam essas
+% macros diretamente — nenhum nível de título sai em negrito por padrão. Só a
+% capa (\imprimirtitulo) tem \bfseries embutido manualmente na classe, prova de
+% que o negrito é intencional em outros títulos de destaque, só ausente aqui.
+% \ABNTEXsubsectionfont/\ABNTEXsubsubsectionfont, na classe, são definidas como
+% referências a \ABNTEXsectionfont (não cópias) — por isso são redefinidas aqui
+% também, de forma independente, sem \bfseries, para NÃO herdar o negrito que
+% \ABNTEXsectionfont ganha logo abaixo (guia: só seção 1ª/2ª em negrito).
+\renewcommand{\ABNTEXchapterfont}{\sffamily\bfseries}
+\renewcommand{\ABNTEXsectionfont}{\sffamily\bfseries}
+\renewcommand{\ABNTEXsubsectionfont}{\sffamily}
+\renewcommand{\ABNTEXsubsubsectionfont}{\sffamily}
+
+% Mesmo defeito, mesma causa, achado no recheque do fix acima (Fase 8, ver
+% auditoria/log.md §21): no Sumário, \cftchapterfont/\cftsectionfont
+% (abntex2.cls linhas 520-529) são \bfseries, mas \cftsubsectionfont/
+% \cftsubsubsectionfont só ajustam \normalsize/\small, sem nunca desligar o
+% negrito com \mdseries — confirmado por `pdffonts`: a página do Sumário só
+% usa a fonte Bold, em todo nível, do capítulo à subsubseção. Corrigido do
+% mesmo jeito: \mdseries explícito só nesses dois níveis, sem tocar
+% \cftchapterfont/\cftsectionfont (que devem continuar em negrito).
+\renewcommand{\cftsubsectionfont}{\normalsize\mdseries}
+\renewcommand{\cftsubsubsectionfont}{\small\mdseries}
+
+% ---------------------------------------------------------------------------
+% Idioma e codificação
+% ---------------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}         % fallback de fonte vetorial; substituído por mathptmx abaixo
+\usepackage{mathptmx}        % Times New Roman (equivalente PostScript) — guia p. 12
+                              % permite Arial OU Times New Roman; Times é o padrão de
+                              % fábrica do ecossistema abntex2/ABNT em pdfLaTeX.
+
+% ---------------------------------------------------------------------------
+% Citação (NBR 10520:2023) e referências (NBR 6023:2025)
+% ---------------------------------------------------------------------------
+\usepackage[
+  alf,
+  abnt-etal-text=it,         % *et al.* em itálico — regra já vigente no texto-fonte
+  abnt-doi=doi,              % NÃO expande "Disponível em:" para um link
+                              % https://dx.doi.org/... — testado com
+                              % abnt-doi=expand e não teve efeito nenhum: o
+                              % ramo de compose.url() que consultaria essa
+                              % opção só roda com abnt.url.package=0, e este
+                              % documento usa abnt.url.package=1 (pacote url
+                              % ativo, citeoption "abnt-url-package=url" já
+                              % disparada pelo próprio abntex2cite), cujo
+                              % ramo ignora abnt-doi por completo — achado
+                              % empírico, não vale a pena outro patch de .bst
+                              % só por isso. A cláusula "DOI: 10.xxxx."
+                              % separada que o guia pede (p. 34: "...ano. DOI
+                              % (se houver). Disponível em:...") NÃO existe
+                              % nesta versão do abntex2-alf.bst nem como
+                              % opção — patch local em
+                              % latex/bst/abntex2-alf-tg1.bst, função
+                              % format.url (achado do autor, ver
+                              % auditoria/log.md §25). "Disponível em:"
+                              % continua mostrando "doi:10.xxxx" cru, o que
+                              % não é vedado pelo guia (nota técnica de
+                              % parametros_guia.md §9.1: os sinais < > são
+                              % convenção tipográfica, não texto do URL).
+  abnt-full-initials=yes,   % prenomes por extenso na lista — regra do projeto
+                              % ("Prenomes por extenso em todas as entradas").
+                              % Default do pacote é abreviar (achado empírico:
+                              % 1ª compilação saiu "ACHTERBERG, T." em vez de
+                              % "ACHTERBERG, Tobias" — ver auditoria/log.md).
+  tg1-cite-style,            % "(Author, YEAR)" — inicial maiúscula na chamada,
+                              % caixa alta só na lista (NBR 10520:2023, já em
+                              % vigor nos dois capítulos-fonte). Chave própria,
+                              % definida em referencias.bib, citando um valor
+                              % que o pacote embutido também define, mas sob uma
+                              % chave que colide (achado empírico, auditoria/
+                              % log.md Fase 4: BibTeX trata chaves de citação
+                              % como insensíveis a maiúscula/minúscula, e
+                              % "abnt-cite-style=AUTHORYEAR" colide com
+                              % "...=AuthorYEAR", sempre resolvendo para a
+                              % primeira, caixa alta — daí a chave própria).
+                              % Passada como OPÇÃO DE PACOTE, não via
+                              % \citeoption direto: \citeoption chamado no
+                              % preâmbulo escreve no .aux antes de \@auxout
+                              % existir e é descartado em silêncio; como opção
+                              % de pacote, o próprio abntex2cite adia a chamada
+                              % para \AtBeginDocument, quando o .aux já existe.
+]{abntex2cite}
+% Estilo alfabético (autor-data) — catálogo já usa esse sistema em todo o texto-fonte
+% (ex. "(FORREST et al., 2019)" na lista, "(Forrest et al., 2019)" em texto), não o
+% sistema numérico.
+
+% ---------------------------------------------------------------------------
+% Figuras, quadros e tabelas — legenda acima, fonte abaixo (guia p. 23-24)
+% ---------------------------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{placeins}       % \FloatBarrier — achado do autor, 13/08/2026 (ver
+                              % auditoria/log.md §25): um Quadro[htbp] adiado
+                              % (Quadro 7) drenava a página seguinte inteira e
+                              % empurrava a Figura 3 (mesmo com [H]) 2 páginas
+                              % para frente. \FloatBarrier força os flutuantes
+                              % pendentes de uma seção a resolver antes da
+                              % próxima, sem alterar nenhuma legenda/numeração.
+
+% Legenda ACIMA do conteúdo para figuras — diverge do padrão de fábrica do LaTeX
+% (que põe legenda de figura abaixo). DIVERGÊNCIA guia×pacote, registrada em
+% auditoria/log.md: o guia (p. 23) manda identificação "na parte superior" para
+% qualquer tipo de ilustração, sem exceção para figuras.
+\floatstyle{plaintop}
+\restylefloat{figure}
+\restylefloat{table}
+
+% Ambiente \quadro distinto de \table — plano exige que a diferença entre Quadro
+% (qualitativo) e Tabela (numérico) seja estrutural, não editorial (prompt, §5).
+% Numeração corrida (sem "within"), não por capítulo: o texto-fonte já audita
+% Quadro 1..11 (mais 3a e 7a) como sequência única do documento, não "Quadro
+% 3.1" — ver auditoria/log.md, Fase 3.
+\newfloat{quadro}{htbp}{loq}
+\floatname{quadro}{Quadro}
+\floatstyle{plaintop}
+\restylefloat{quadro}
+
+% Figura e Tabela também numeradas de forma corrida, pelo mesmo motivo: o
+% texto-fonte usa "Figura 1/2/3" e "Tabela 1" flat, não escopado por capítulo
+% (que é o padrão de fábrica do memoir/abntex2 para relatórios multi-capítulo).
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+% Equações também: numeração corrida, não "(3.1)" por capítulo. Só as 2
+% equações efetivamente referenciadas em texto (PL, MILP) são numeradas — as
+% outras 5 do Cap. 3 usam align*/equation* (guia p. 22: numera-se "só quando
+% necessário"; achado C2/Fase 8, ver auditoria/log.md §19).
+\counterwithout{equation}{chapter}
+
+% "Título de seção primária inicia em página ímpar" (guia p. 12) é regra de
+% NUMERAÇÃO, independente de oneside/twoside (que é só sobre impressão física).
+% A opção nativa \openright da memoir NÃO resolve isso aqui: seu
+% \clearforchapter (memoir.cls) só insere a página em branco sob \if@twoside —
+% em oneside ele degrada para um \clearpage comum, achado empírico (Fase 8).
+% Reimplementado manualmente, sem depender de \if@twoside: mantém oneside
+% (decisão da Fase 2, entrega só digital) e ainda força \chapter a cair em
+% página ímpar. Achado C2/Fase 8, ver auditoria/log.md §19.
+\makeatletter
+\renewcommand{\clearforchapter}{%
+  \clearpage
+  \ifodd\value{page}\else
+    \hbox{}\thispagestyle{empty}\newpage
+  \fi
+}
+\makeatother
+
+% Comando \fontenota — a "Fonte:" abaixo do conteúdo é elemento obrigatório mesmo em
+% produção do próprio autor (guia p. 23: "elaborado pelo próprio autor"). Não é o
+% \caption padrão do LaTeX (que abntex2 já usa para a legenda de cima); é uma segunda
+% linha, centralizada, fonte reduzida, adicionada manualmente dentro de cada float.
+\newcommand{\fontenota}[1]{%
+  \par\nobreak
+  {\small\centering Fonte: #1\par}%
+}
+% \par antes do grupo: sem isso, uma tabela/quadro estreito (que não ocupa a
+% largura inteira, ex. a Tabela 1 de McNemar) não força quebra de linha
+% sozinho, e a linha "Fonte:" aparece colada ao lado do conteúdo em vez de
+% abaixo — achado empírico, corrigido aqui de uma vez para todos os usos.
+
+\captionsetup{
+  labelsep=endash,   % "travessão" entre número e título — guia p. 23 ("travessão")
+  font=small,        % fonte reduzida para legendas — guia p. 12 (10/11 para legendas)
+  justification=centering,
+}
+
+% ---------------------------------------------------------------------------
+% Equações numeradas à direita, só as referenciadas — guia p. 22
+% ---------------------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+% amsmath numera à direita por padrão; equações sem \label/\eqref não citadas
+% permanecem sem número visível de fato relevante — a disciplina de "só numerar o
+% que é referenciado" é aplicada na redação (Fase 3), não no preâmbulo.
+
+% ---------------------------------------------------------------------------
+% Apoio geral
+% ---------------------------------------------------------------------------
+\usepackage{indentfirst}
+% Recuo de primeira linha de parágrafo — o guia NÃO especifica um valor de recuo em
+% nenhuma das 66 páginas lidas (só especifica o recuo de 4cm para citação longa,
+% guia p. 25). DECISÃO (não DIVERGÊNCIA, porque o guia é silente, não contraditório):
+% usar o recuo padrão do abntex2 (1,25cm), prática corrente ABNT. Ver auditoria/log.md.
+
+\usepackage{microtype}       % justificação tipográfica fina — não normativo, só qualidade
+\usepackage{xcolor}          % suporte de cor para BPMN e destaques pontuais
+\usepackage{booktabs}        % regras horizontais para a Tabela de McNemar (única Tabela)
+\usepackage{tabularx}        % colunas de largura flexível — os 13 Quadros do Cap. 3
+                              % têm células de texto longo, não cabem em tabular fixo
+\usepackage{array}           % suporte a especificadores de coluna customizados (p{})
+
+% hyperref já é carregado internamente pelo abntex2 (via bookmark.sty) — carregá-lo
+% de novo com opções próprias causa "Option clash". Ajuste feito por \hypersetup,
+% não por novo \usepackage. Não é exigido pelo guia; só navegação interna do PDF
+% (sumário clicável, remissões), sem alterar a aparência impressa do documento.
+% plainpages=false: sem isso, hyperref nomeia âncoras de página pelo valor impresso
+% de \thepage, que o abntex2 mantém intencionalmente parado durante \pretextual
+% (guia p. 12: "folhas pré-textuais devem ser contadas... mas não numeradas") —
+% duas páginas físicas distintas (capa, folha de rosto) ficam com o mesmo \thepage
+% e colidem no nome da âncora ("destination... page.1... duplicate ignored").
+% plainpages=false usa o número físico absoluto para o nome da âncora em vez do
+% valor impresso, resolvendo a colisão sem alterar a numeração visível do documento.
+% Fonte do diagnóstico: TeX FAQ, "pdfTeX destination ... ignored"
+% (https://texfaq.org/FAQ-hyperdupdest).
+\hypersetup{colorlinks=false, hidelinks, plainpages=false, pageanchor=false}
+
+% ---------------------------------------------------------------------------
+% Metadados do documento — preenchidos em pretextual/dados.tex (Fase 7)
+% ---------------------------------------------------------------------------
+% \autor, \titulo, \instituicao etc. ficam num arquivo à parte porque dependem de
+% dados que ainda não foram confirmados (nome completo do autor, título exato,
+% orientador) — ver PENDÊNCIA em auditoria/log.md. Não fabricar aqui (R-2).

@@ -1,0 +1,45 @@
+% main.tex — só preâmbulo e \input. Nenhum conteúdo nasce aqui.
+\input{preambulo}
+\input{pretextual/dados}
+
+\begin{document}
+
+\pretextual
+  \input{pretextual/capa}
+  \input{pretextual/folioderosto}
+  % TODO Fase 7: ficha catalográfica, declaração à banca, folha de aprovação,
+  % folha de citação à CAPES, dedicatória (opcional), agradecimentos (opcional),
+  % epígrafe (opcional), resumo, abstract, listas de figuras/quadros/tabelas/
+  % abreviaturas e siglas — cada um contra o modelo do guia (parametros_guia.md §7).
+  % \tableofcontents* (não \tableofcontents): a forma sem estrela do memoir
+  % (base do abntex2) adiciona "Sumário" como entrada de si mesmo na lista —
+  % o exemplo real do guia (Figura 11, parametros_guia.md §2) não faz isso.
+  % Fonte da mecânica: memoir.cls, macro \newlistof (\if##1 / \KeepFromToc).
+  \tableofcontents*
+  % A própria página do sumário usa internamente \thispagestyle{chapter}
+  % (memoir.cls, \newlistof), que deveria herdar o alias chapter->empty de
+  % \pretextual (guia: pré-textuais contadas mas não numeradas) — forçado aqui
+  % de forma explícita como cinto de segurança, caso o alias não alcance a
+  % primeira página do sumário a tempo.
+  \thispagestyle{empty}
+
+\textual
+  \input{capitulos/cap1}
+  % Capítulo 2 (Referencial Teórico): criado em 29/08/2026 e reescrito em
+  % 25/09/2026 no enxugamento pós-feedback (auditoria/plano_enxugamento.md),
+  % quando passou a concentrar a literatura antes repetida entre os Caps. 1
+  % e 3. A revisão sistemática (protocolo no Passo 2 do Cap. 3) é executada
+  % no TG2 e amplia este capítulo.
+  \input{capitulos/cap2}
+  \input{capitulos/cap3}
+
+\postextual
+  % .bst local, não o do sistema (R-3, achado C2/Fase 8, ver
+  % auditoria/log.md §19 e o cabeçalho de latex/bst/abntex2-alf-tg1.bst):
+  % abntex2cite já dispara \bibliographystyle{abntex2-alf} sozinho via
+  % \AtEndDocument se nada for chamado antes — chamar aqui, no corpo, depois
+  % de \begin{document}, garante que esta escolha vença a automática.
+  \bibliographystyle{latex/bst/abntex2-alf-tg1}
+  \bibliography{referencias}
+
+\end{document}
