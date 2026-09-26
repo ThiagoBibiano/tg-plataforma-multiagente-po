@@ -13,7 +13,8 @@
       "**/.ruff_cache": true,
       "**/.pytest_cache": true
     },
-    "python.defaultInterpreterPath": "../po-multiagente/.venv/bin/python"
+    "python.terminal.activateEnvironment": true,
+    "python-envs.terminal.autoActivationType": "command"
   },
   "extensions": {
     "recommendations": [
