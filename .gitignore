@@ -45,3 +45,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 *~
+
+# Tabelas importadas sem tag do código, só para testar a diagramação.
+resultados/rascunho/

@@ -22,6 +22,7 @@ O artefato descrito no texto é desenvolvido em um repositório próprio:
 ├── capitulos/          # cap1 (Introdução), cap2 (Referencial), cap3 (Metodologia)
 ├── figuras/            # figuras em PDF, com a fonte SVG ao lado
 ├── latex/bst/          # estilo bibliográfico ABNT ajustado ao guia da UFABC
+├── scripts/            # importa_resultados.py: tabelas do experimento → resultados/
 └── tg2.code-workspace  # abre este repositório e o do código numa só janela do VS Code
 ```
 
@@ -36,9 +37,22 @@ latexmk -C                                        # remove os arquivos de build
 
 ## Relação com o código
 
-O fluxo é de mão única, do código para o texto. Quando houver resultados, este
-repositório registrará em `artefato.lock` a versão exata do `po-multiagente`
-que os gerou, e as tabelas serão importadas por script para `resultados/`.
+O fluxo é de mão única, do código para o texto. Um lote do experimento é
+gerado no `po-multiagente` (`po-multiagente experimento <conjunto>`), e as
+tabelas agregadas entram aqui por script:
+
+```bash
+python3 scripts/importa_resultados.py ../po-multiagente/saidas/experimento/<lote> --doi <DOI>
+```
+
+O script copia só `tabelas/*.tex` para `resultados/tabelas/`, que o texto lê
+com `\input`. Ele também grava `resultados/manifesto.json`, com o hash de
+cada tabela, e registra em `artefato.lock` a tag, o commit e o DOI do código.
+A importação é recusada se o código não estiver numa tag limpa, ou se o lote
+tiver sido gerado com outra versão. Com `--rascunho`, as tabelas vão para
+`resultados/rascunho/`, sem tag, só para testar a diagramação. Execuções e
+dossiês não são copiados, porque citam as instâncias do conjunto-teste, que é
+privado até a defesa.
 
 ## O que não está aqui
 
